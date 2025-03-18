@@ -2,12 +2,12 @@ let projects = [
    {
       id: 1,
       name: "Criação",
-      description: "Craira dsakndsaodoaihçsjkdspghi"
+      description: "Criar sistema de tarefas"
    },
    {
       id: 2,
-      name: "Deletação",
-      description: "deletatrr dsakndsaodoaihçsjkdspghi"
+      name: "Deletar",
+      description: "deletar sistema de curso"
    }
 ];
 
