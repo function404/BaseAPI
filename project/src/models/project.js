@@ -1,26 +1,20 @@
-let projects = [
-   {
-      id: 1,
-      name: "Criação",
-      description: "Criar sistema de tarefas"
-   },
-   {
-      id: 2,
-      name: "Deletar",
-      description: "deletar sistema de curso"
-   }
-];
-
+const database = require('../config/database');
 class Project {
-   constructor(id, name, description) {
-      this.id = id;
-      this.name = name;
-      this.description = description;
-   }
-
-   static fetchProjects() {
-      return projects
+   constructor() {
+      this.model = database.define('projects', {
+         id: {
+            type: database.Sequelize.INTEGER,
+            primaryKey: true,
+            autoIncrement: true,
+         },
+         name: {
+            type: database.Sequelize.STRING
+         },
+         description: {
+            type: database.Sequelize.STRING
+         },
+      })
    }
 }
 
-module.exports = Project;
+module.exports = (new Project).model;

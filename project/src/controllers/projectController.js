@@ -1,8 +1,9 @@
 const Project = require('../models/project');
 
 class ProjectController {
-   static getProject(req, res) {
-      res.json(Project.fetchProjects());
+   static async getProject(req, res) {
+      const projects = await Project.findAll();
+      res.json(projects);
    }
 
    static createProject(req, res) {

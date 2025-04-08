@@ -7,6 +7,7 @@
 
 const express = require('express');
 
+const database = require('./config/database');
 const UserController = require('./controllers/userController');
 const ProjectController = require('./controllers/projectController');
 const TaskController = require('./controllers/taskController');
@@ -31,6 +32,13 @@ app.get('/tasks', TaskController.getTasks);
 app.put('/tasks/:id', TaskController.updateTasks);
 app.delete('/tasks/:id', TaskController.deleteTasks);
 
-app.listen(Number(port), () => 
-    console.log(`🚀fiuu🚀 Servidor rodando na porta 🚀paaa🚀${port}`)
-);
+database.sync({ force: true })
+    .then(() => {
+        app.listen(Number(port), () => 
+            console.log(`🚀fiuu🚀 Servidor rodando na porta 🚀paaa🚀${port}`)
+        );
+    })
+    .catch(err => {
+        console.error('Erro ao sincronizar o banco de dados:', err);
+    });
+
